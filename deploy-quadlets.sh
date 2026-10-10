@@ -36,6 +36,6 @@ echo "==> Reloading systemd user daemon"
 systemctl --user daemon-reload
 
 echo "==> (Re)starting caddy"
-systemctl --user restart caddy
+systemctl --user restart caddy jonasluethiweb
 
 systemctl --user --no-pager status caddy || true
