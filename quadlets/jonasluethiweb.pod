@@ -1,0 +1,5 @@
+[Pod]
+PodName=jonasluethi-web
+Network=caddy.network
+NetworkAlias=jonasluethiweb
+

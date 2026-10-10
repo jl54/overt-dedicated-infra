@@ -1,0 +1,14 @@
+[Unit]
+Description=jonasluethi.com web app
+
+[Container]
+Image=ghcr.io/jl54/jonasluethi-web:latest
+ContainerName=jonasluethi-web
+Pod=jonasluethiweb.pod
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
