@@ -1,0 +1,19 @@
+[Unit]
+Description=Caddy reverse proxy container
+
+[Container]
+Image=ghcr.io/jl54/caddy-cloudflare-dns:latest
+ContainerName=caddy
+EnvironmentFile=%h/projects/caddy/.env
+PublishPort=80:80
+PublishPort=443:443
+Volume=caddy-config.volume:/config
+Volume=caddy-data.volume:/data
+Volume=%h/projects/caddy/Caddyfile:/etc/caddy/Caddyfile:Z
+Network=caddy.network
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
