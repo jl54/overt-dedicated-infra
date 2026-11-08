@@ -1,0 +1,22 @@
+[Unit]
+Description=PostgreSQL for Synapse
+
+[Container]
+Image=docker.io/library/postgres:18
+ContainerName=synapse-db
+Pod=synapse.pod
+Volume=synapse-db.volume:/var/lib/postgresql
+Secret=pg_user
+Secret=pg_password
+Environment=POSTGRES_USER_FILE=/run/secrets/pg_user
+Environment=POSTGRES_PASSWORD_FILE=/run/secrets/pg_password
+Environment=POSTGRES_DB=synapse
+Environment="POSTGRES_INITDB_ARGS=--encoding=UTF8 --lc-collate=C --lc-ctype=C"
+Exec=postgres -c listen_addresses=127.0.0.1
+HealthCmd=pg_isready -h 127.0.0.1
+HealthInterval=10s
+Notify=healthy
+
+[Service]
+Restart=always
+TimeoutStartSec=900

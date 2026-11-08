@@ -1,0 +1,16 @@
+[Unit]
+Description=Synapse homeserver
+Requires=synapse-db.service
+After=synapse-db.service
+
+[Container]
+Image=docker.io/matrixdotorg/synapse:latest
+ContainerName=synapse-server
+Pod=synapse.pod
+Volume=synapse-data.volume:/data
+Environment=SYNAPSE_SERVER_NAME=jonasluethi.com
+Environment=SYNAPSE_REPORT_STATS=no
+
+[Service]
+Restart=always
+TimeoutStartSec=900

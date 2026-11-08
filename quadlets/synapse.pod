@@ -1,0 +1,10 @@
+[Unit]
+Description=Synapse pod
+
+[Pod]
+PodName=synapse
+Network=caddy.network
+NetworkAlias=synapse
+
+[Install]
+WantedBy=default.target
